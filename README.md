@@ -14,7 +14,7 @@ SMS Agent is a React Native based application what enables the mobile device to 
 
 ## Installation
 
-1. Install `adb`
+### 1. Install `adb`
    - **Windows:**  
      Download the [Android SDK Platform-Tools](https://developer.android.com/studio/releases/platform-tools) and extract the contents. Add the folder to your system's PATH.  
    - **macOS/Linux:**  
@@ -32,27 +32,26 @@ SMS Agent is a React Native based application what enables the mobile device to 
      adb version
      ```
 
-2. Download the `.aab` file
-   The `.aab` file is located in the [Releases](../../releases) section of this repository. Download and save it to your computer
+### 2. Download the `.apks` file
+   The `.apks` file is located in the [Releases](../../releases) section of this repository. Download and save it to your computer
 
-3. Generate an APK from the `.aab` file
-   Use `bundletool` to create an APK that can be installed on your device:
-   ```bash
-   java -jar bundletool.jar build-apks --bundle=<path-to-your-app>.aab --output=<output-path>.apks --mode=universal
-   ```
-
-4. Enable Developer Mode on Your Phone
+### 3. Enable Developer Mode on Your Phone
    * Go to your phone's settings.
    * Enable Developer Options and USB Debugging.
 
-5. Connect Your Phone to the Computer
+### 4. Connect Your Phone to the Computer
    Use a USB cable to connect your Android device to your computer. Ensure adb recognizes your device:
    ```bash
    adb devices
    ```
-
-6. Install the App Directly Using `bundletool`
-   Use `bundletool` to install the generated `.apks` package on your connected device:  
+   This will display a list of connected devices. You should see something like this:
    ```bash
-   java -jar bundletool.jar install-apks --apks=<path-to-apks>.apks
+   <device-id>   device
+   ```
+   you will need <device-id> in the next instruction
+
+### 5. Install the App Using `bundletool`
+   Use `bundletool` to install the `.apks` file on your connected device:  
+   ```bash
+   java -jar bundletool.jar install-apks --apks=<path-to-apks>.apks --device-id=<device-ip>
    ```
