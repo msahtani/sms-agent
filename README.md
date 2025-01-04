@@ -8,9 +8,9 @@ SMS Agent is a React Native based application what enables the mobile device to 
 
 
 ## Prerequisites
-* ADB (Android Debug Bridge) installed and configured.
-* Java installed for running bundletool.
-* USB Debugging enabled on your Android device.
+* ADB 
+* Java 17 or higher
+* [SMS Service](https://github.com/msahtani/sms-service) Application
 
 ## Installation
 
@@ -33,7 +33,8 @@ SMS Agent is a React Native based application what enables the mobile device to 
      ```
 
 ### 2. Download the `.apks` file
-   The `.apks` file is located in the [Releases](../../releases) section of this repository. Download and save it to your computer
+   The `.apks` file is located in the [Releases](../../releases/download/v0.1.0/sms-agent-v0.1.0.apks
+) section of this repository. Download and save it to your computer
 
 ### 3. Enable Developer Mode on Your Phone
    * Go to your phone's settings.
@@ -48,10 +49,25 @@ SMS Agent is a React Native based application what enables the mobile device to 
    ```bash
    <device-id>   device
    ```
-   you will need <device-id> in the next instruction
+   Note the `<device-id>`, as you'll need it for the next step.
 
 ### 5. Install the App Using `bundletool`
    Use `bundletool` to install the `.apks` file on your connected device:  
    ```bash
    java -jar bundletool.jar install-apks --apks=<path-to-apks>.apks --device-id=<device-ip>
    ```
+> [!Warning]
+> For security reasons, make sure to disable developer mode on your phone.
+
+
+
+## Usage
+1. Start the application, enter the server IP, and click "Connect."
+2. Send a POST request to the server with the following details:
+   * Recipient's phone number
+   * SMS message
+> [!Note]
+> If the application is running on your computer, ensure the firewall is disabled for the private network.
+
+## Contribution
+If you'd like to contribute, feel free to contact me at [mohcine.sahtani@gmail.com](mailto:mohcine.sahtani@gmail.com).
